@@ -6,6 +6,7 @@
   - [Local Components](#local-components)
   - [Scoped Styles](#scoped-styles)
   - [Slots](#slots)
+  - [Named Slot](#named-slot)
 
 ## Deployment
 
@@ -73,7 +74,8 @@ export default {
     <base-card>
       <div>
         <h3>{{ fullName }}</h3>
-    >
+      </div>
+    </base-card>
   </section>
 </template>
 ```
@@ -83,5 +85,31 @@ export default {
   <div>
     <slot></slot>
   </div>
+</template>
+```
+
+## Named Slot
+
+- Used when we have multiple slot
+- We can pecify the slot nme in which we have to render the content
+- If we add a namedslot, we will **always** have to use `v-slot`, else the content will not render
+
+```html
+<!-- Base Class -->
+<slot name="nameslot"></slot>
+```
+
+```html
+<!-- Class o be renders -->
+<template>
+  <section>
+    <base-card>
+      <template v-slot:nameslot>
+        <div>
+          <h3>{{ fullName }}</h3>
+        </div>
+      </template>
+    </base-card>
+  </section>
 </template>
 ```
