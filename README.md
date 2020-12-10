@@ -7,6 +7,7 @@
   - [Scoped Styles](#scoped-styles)
   - [Slots](#slots)
   - [Named Slot](#named-slot)
+  - [Empty Slot](#empty-slot)
 
 ## Deployment
 
@@ -95,6 +96,7 @@ export default {
 - If we add a single namedslot and no other slots, we will **always** have to use template ith `v-slot`, else the content will not render
 - If we have one unamed slot and one named slot, content inside template will be rendered in named slot and rest unnamed slot
 - We can also exlicity specify `v-slot:default` to use unnamed slot
+- `v-slot:` can be replaced with `#`
 
 ```html
 <!-- Base Class -->
@@ -137,4 +139,44 @@ export default {
     </base-card>
   </section>
 </template>
+```
+
+## Empty Slot
+
+- If we provide no content for named slot, we can show a dummy data in it
+- DOM is still created with no data for slots
+- To improve UI we can perform an v-if check to not render the slot if there is no data. Refer [\$slot](#slot)
+
+```html
+<!-- Base Class -->
+<slot name="nameslot">
+  Hello this is an Empty Slot
+</slot>
+```
+
+<!-- Class o be renders, but no content provded for nameslot -->
+<template>
+  <section>
+    <base-card>
+      <template v-slot:default>
+        <h3>{{ fullName }}</h3>
+      </template>
+    </base-card>
+  </section>
+</template>
+```
+
+## `$slot`
+
+- Provided by vue to mannipulate slot
+- We can get info about are slots by console logging it in `mount()` lifecycle hook
+- We can use it to perform an if check and not load content if not required
+
+```html
+<!-- Checks hether we recieved HTML data for nameslot slot -->
+<header v-if="$slots.nameslot">
+  <slot name="nameslot">
+    Hello this is an Empty Slot
+  </slot>
+</header>
 ```
