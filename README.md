@@ -215,3 +215,4 @@ export default {
 3. Retrieving props from parent as slotProps
 4. Accsisng item as slotProps.item
 5. **If** we are using abc-def, we will access it as`slotProps['abc-def']` as we cant use `-` in Html
+6. **If** there is **only** one slot, then we can remove `template` tag and move `#default="slotProps"` to `course-goals`
