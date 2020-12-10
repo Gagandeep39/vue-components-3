@@ -1,7 +1,9 @@
 <template>
   <div>
     <header>
-      <slot name="header"></slot>
+      <slot name="header">
+        No data provided to header slot
+      </slot>
     </header>
     <slot></slot>
   </div>
