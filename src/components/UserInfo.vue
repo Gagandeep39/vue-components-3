@@ -6,6 +6,8 @@
           <h3>{{ fullName }}</h3>
           <base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
         </header>
+      </template>
+      <template>
         <p>{{ infoText }}</p>
       </template>
     </base-card>
