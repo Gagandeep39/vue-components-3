@@ -5,13 +5,11 @@
 </template>
 
 <script>
-export default {
-
-};
+export default {};
 </script>
 
 <style scoped>
-section div {
+div {
   margin: 2rem auto;
   max-width: 30rem;
   border-radius: 12px;
