@@ -7,7 +7,8 @@
           <base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
         </header>
       </template>
-      <template v-slot:default>
+      <!-- v-slot can be replaced with # -->
+      <template #default>
         <p>{{ infoText }}</p>
       </template>
     </base-card>

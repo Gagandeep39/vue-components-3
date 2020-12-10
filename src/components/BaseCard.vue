@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header>
+    <header v-if="$slots.header">
       <slot name="header">
         No data provided to header slot
       </slot>
@@ -10,7 +10,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  // mounted() {
+  //   console.log(this.$slots);
+  // }
+};
 </script>
 
 <style scoped>
