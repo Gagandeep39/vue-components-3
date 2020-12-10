@@ -8,6 +8,7 @@
   - [Slots](#slots)
   - [Named Slot](#named-slot)
   - [Empty Slot](#empty-slot)
+  - [Scoped Slots](#scoped-slots)
 
 ## Deployment
 
@@ -180,3 +181,37 @@ export default {
   </slot>
 </header>
 ```
+
+## Scoped Slots
+
+- Allows passing data from inside component
+- Passing data from component containg slot to component where we pass Markup data
+
+```html
+<!-- Parent -->
+<course-goals>
+  <template #default="slotProps">
+    <h2>
+      {{ slotProps.item }}
+    </h2>
+  </template>
+</course-goals>
+```
+
+```html
+<!-- Child -->
+<template>
+  <ul>
+    <li v-for="goal in goals" :key="goal">
+      <!-- Allows accessing goal from parent -->
+      <slot :item="goal"></slot>
+    </li>
+  </ul>
+</template>
+```
+
+1. Here we are Creating a slot in child
+2. Binding `goal` to variable `item` as `v-bind:item="goal"`
+3. Retrieving props from parent as slotProps
+4. Accsisng item as slotProps.item
+5. **If** we are using abc-def, we will access it as`slotProps['abc-def']` as we cant use `-` in Html
