@@ -92,7 +92,9 @@ export default {
 
 - Used when we have multiple slot
 - We can pecify the slot nme in which we have to render the content
-- If we add a namedslot, we will **always** have to use `v-slot`, else the content will not render
+- If we add a single namedslot and no other slots, we will **always** have to use template ith `v-slot`, else the content will not render
+- If we have one unamed slot and one named slot, content inside template will be rendered in named slot and rest unnamed slot
+- We can also exlicity specify `v-slot:default` to use unnamed slot
 
 ```html
 <!-- Base Class -->
@@ -108,6 +110,29 @@ export default {
         <div>
           <h3>{{ fullName }}</h3>
         </div>
+      </template>
+    </base-card>
+  </section>
+</template>
+```
+
+```html
+<!-- Explicitly specifying named and unnamed sot -->
+<template>
+  <section>
+    <base-card>
+      <template v-slot:header>
+        <h2>Available Badges</h2>
+      </template>
+      <template v-slot:default>
+        <ul>
+          <li>
+            <base-badge type="admin" caption="ADMIN"></base-badge>
+          </li>
+          <li>
+            <base-badge type="author" caption="AUTHOR"></base-badge>
+          </li>
+        </ul>
       </template>
     </base-card>
   </section>
