@@ -1,5 +1,5 @@
 <template>
-  <h2>Manage Goals</h2>
+  <h1>Manage Goals</h1>
 </template>
 
 <script>

@@ -14,8 +14,14 @@
         </h2>
       </template>
     </course-goals> -->
-    <active-goals></active-goals>
-    <manage-goals></manage-goals>
+
+    <!-- Dynamic Component -->
+    <button @click="setSelectedComponent('active-goals')">Active Goal</button>
+    <button @click="setSelectedComponent('manage-goals')">Manage Goal</button>
+    <!-- <active-goals v-if="selectedComponent === 'active-goals'"></active-goals> -->
+    <!-- <manage-goals v-if="selectedComponent === 'manage-goals'"></manage-goals> -->
+    <!-- We re using ngbind as we are proidng a variabl -->
+    <component :is="selectedComponent"></component>
   </div>
 </template>
 
@@ -37,6 +43,10 @@ export default {
   },
   data() {
     return {
+      selectedComponent: "active-goals",
+      setSelectedComponent(cmp) {
+        this.selectedComponent = cmp;
+      },
       activeUser: {
         name: "Gagandeep Singh",
         description: "Developer",

@@ -9,6 +9,7 @@
   - [Named Slot](#named-slot)
   - [Empty Slot](#empty-slot)
   - [Scoped Slots](#scoped-slots)
+  - [Dynamic COmponents](#dynamic-components)
 
 ## Deployment
 
@@ -22,10 +23,10 @@
 ```js
 const app = createApp(App);
 
-app.component("the-header", TheHeader);
-app.component("base-badge", BaseBadge);
+app.component('the-header', TheHeader);
+app.component('base-badge', BaseBadge);
 
-app.mount("#app");
+app.mount('#app');
 ```
 
 ## Local Components
@@ -216,3 +217,41 @@ export default {
 4. Accsisng item as slotProps.item
 5. **If** we are using abc-def, we will access it as`slotProps['abc-def']` as we cant use `-` in Html
 6. **If** there is **only** one slot, then we can remove `template` tag and move `#default="slotProps"` to `course-goals`
+
+## Dynamic COmponents
+
+- Dynamically show components
+- Better than v-if, as it reduces the code to be rtten sometimes
+- Uses <component is="custom-defined-cmponent"></component>
+- Shows the specified component in its plae
+
+```html
+<!-- Notmal Component -->
+<button @click="setSelectedComponent('active-goals')">Active Goal</button>
+<button @click="setSelectedComponent('manage-goals')">Manage Goal</button>
+<active-goals v-if="selectedComponent === 'active-goals'"></active-goals>
+<manage-goals v-if="selectedComponent === 'manage-goals'"></manage-goals>
+
+<!-- Dynamic COmponent -->
+<button @click="setSelectedComponent('active-goals')">Active Goal</button>
+<button @click="setSelectedComponent('manage-goals')">Manage Goal</button>
+<!-- We re using ngbind as we are proidng a variabl -->
+<component :is="selectedComponent"></component>
+```
+
+```js
+export default {
+  components: {
+    ActiveGoals,
+    ManageGoals,
+  },
+  data() {
+    return {
+      selectedComponent: 'active-goals',
+      setSelectedComponent(cmp) {
+        this.selectedComponent = cmp;
+      },
+    };
+  },
+};
+```
