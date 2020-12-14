@@ -12,6 +12,7 @@
   - [Dynamic Components](#dynamic-components)
   - [Caching Dynamic Components](#caching-dynamic-components)
   - [Teleport](#teleport)
+  - [Styling folder structure](#styling-folder-structure)
 
 ## Deployment
 
@@ -291,3 +292,7 @@ export default {
 
 - Renders the component inside body tag
 - We can render this using **id selector** as `#app`
+
+## Styling folder structure
+
+- Refer [link](https://v3.vuejs.org/style-guide) for more info 
