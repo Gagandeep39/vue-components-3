@@ -20,8 +20,12 @@
     <button @click="setSelectedComponent('manage-goals')">Manage Goal</button>
     <!-- <active-goals v-if="selectedComponent === 'active-goals'"></active-goals> -->
     <!-- <manage-goals v-if="selectedComponent === 'manage-goals'"></manage-goals> -->
-    <!-- We re using ngbind as we are proidng a variabl -->
-    <component :is="selectedComponent"></component>
+
+    <!-- Enables state caching  -->
+    <keep-alive>
+      <!-- We are using ngbind as we are proidng a variabl -->
+      <component :is="selectedComponent"></component>
+    </keep-alive>
   </div>
 </template>
 

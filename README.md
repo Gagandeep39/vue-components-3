@@ -9,7 +9,8 @@
   - [Named Slot](#named-slot)
   - [Empty Slot](#empty-slot)
   - [Scoped Slots](#scoped-slots)
-  - [Dynamic COmponents](#dynamic-components)
+  - [Dynamic Components](#dynamic-components)
+  - [Caching Dynamic Components](#caching-dynamic-components)
 
 ## Deployment
 
@@ -218,7 +219,7 @@ export default {
 5. **If** we are using abc-def, we will access it as`slotProps['abc-def']` as we cant use `-` in Html
 6. **If** there is **only** one slot, then we can remove `template` tag and move `#default="slotProps"` to `course-goals`
 
-## Dynamic COmponents
+## Dynamic Components
 
 - Dynamically show components
 - Better than v-if, as it reduces the code to be rtten sometimes
@@ -254,4 +255,17 @@ export default {
     };
   },
 };
+```
+
+## Caching Dynamic Components
+
+- If we are creating forms and we have 2 formes shown using <component>
+- We need to make sure both are in memory if we hide anther
+- By default, it deletes the data from memory when components re switched
+- Can be pevented by surrounding the `<component>` with `<keep-alive>`
+
+```html
+<keep-alive>
+  <component :is="selectedComponent"></component>
+</keep-alive>
 ```
