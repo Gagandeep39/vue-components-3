@@ -11,6 +11,7 @@
   - [Scoped Slots](#scoped-slots)
   - [Dynamic Components](#dynamic-components)
   - [Caching Dynamic Components](#caching-dynamic-components)
+  - [Teleport](#teleport)
 
 ## Deployment
 
@@ -269,3 +270,24 @@ export default {
   <component :is="selectedComponent"></component>
 </keep-alive>
 ```
+
+## Teleport
+
+- Move element to anoher page
+- Takes 2 attributs
+  - CSS selector of element where to display
+  - Content to be displayed
+- Usuay used to display error on root page nstead of child component
+
+```html
+<teleport to="body">
+  <error-alert v-if="dataIsInvalid">
+    <h2>Input is invalid!</h2>
+    <p>Enter few characters</p>
+    <button @click="confirmError">Ok</button>
+  </error-alert>
+</teleport>
+```
+
+- Renders the component inside body tag
+- We can render this using **id selector** as `#app`
