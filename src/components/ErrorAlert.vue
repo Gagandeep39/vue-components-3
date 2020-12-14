@@ -1,0 +1,23 @@
+<template>
+  <!-- Open attribute required for dialog to worlk -->
+  <dialog open>
+    <slot></slot>
+  </dialog>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style scoped>
+dialog {
+  position: fixed;
+  top: 20vh;
+  left: 30%;
+  width: 40%;
+  background-color: white;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.26);
+  padding: 1rem;
+  margin: 0;
+}
+</style>
