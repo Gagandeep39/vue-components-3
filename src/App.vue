@@ -22,8 +22,8 @@
     <!-- <manage-goals v-if="selectedComponent === 'manage-goals'"></manage-goals> -->
 
     <!-- Enables state caching  -->
+    <!-- We are using ngbind as we are proidng a variabl -->
     <keep-alive>
-      <!-- We are using ngbind as we are proidng a variabl -->
       <component :is="selectedComponent"></component>
     </keep-alive>
   </div>
